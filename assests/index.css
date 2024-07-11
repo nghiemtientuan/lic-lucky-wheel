@@ -72,9 +72,10 @@ body {
   height: 0;
   border: solid;
   border-top-width: 45vh;
-  border-left-width: calc(0.521*45vh);
-  border-right-width: calc(0.521*45vh);
-  left: calc(45vh/2);
+  border-left-width: calc(0.522*45vh);
+  border-right-width: calc(0.522*45vh);
+  border-bottom-width: 0;
+  left: calc(45vh/2 - 4px);
   border-color: transparent;
   transform-origin: 50% 100%;
 }
@@ -116,6 +117,7 @@ body {
   margin: 70px 0 0 70px;
 }
 .wheel__arrow {
+  z-index: 3;
   width: 80px;
   height: 80px;
   background: #fff;
