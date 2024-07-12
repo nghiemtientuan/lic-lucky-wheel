@@ -1,7 +1,5 @@
 $(document).ready(function () {
-    var countClicked = 0;
-    var clicked = false;
-    
+    let countClicked = 0;
     let angle = 0;
     let spinning = false;
     let spinInterval;
@@ -69,41 +67,31 @@ $(document).ready(function () {
         $('#wheel__inner').append('<div class="wheel__sec"></div>');
     });
 
-    function getPosition(position) {
+    function caculateGift(position) {
+        countClicked++;
         if (position <= 30) {
-            $('.congratulation__note').text('CHÚC MỪNG BẠN TRÚNG ĐƯỢC MỘT NHÀ LẦU 4 TẦNG');
         } else if (position <= 90) {
-            $('.congratulation__note').text('CHÚC MỪNG BẠN TRÚNG ĐƯỢC MỘT CHUYẾN DU LỊCH VŨNG TÀU');
         } else if (position <= 150) {
-            $('.congratulation__note').text('CHÚC BẠN MAY MẮN LẦN SAU');
         } else if (position <= 210) {
-            $('.congratulation__note').text('CHÚC MỪNG BẠN TRÚNG ĐƯỢC MỘT THẺ CÀO 200K');
         } else if (position <= 270) {
-            $('.congratulation__note').text('CHÚC MỪNG BẠN TRÚNG ĐƯỢC MỘT THẺ CÀO 100K');
         } else if (position <= 330) {
-            $('.congratulation__note').text('CHÚC MỪNG BẠN TRÚNG ĐƯỢC MỘT CHUYẾN DU LỊCH MIỀN TÂY');
         } else {
-            $('.congratulation__note').text('CHÚC MỪNG BẠN TRÚNG ĐƯỢC MỘT CĂN NHÀ LẦU 4 TẦNG');
         }
-        $('.congratulation').fadeIn();
-        clicked = false;
-        countClicked = 0;
+        // $('.congratulation').fadeIn();
     }
 
-    $('#wheel_start').click(function () {
-        if (!spinning) {
+    $('#wheel__button').click(function () {
+        if (wheelButtonOption == WHEEL_OPTION_TWO_CLICK && !spinning) {
             spinning = true;
             spinInterval = setInterval(function() {
                 angle += 77;
                 $(".wheel__inner").css("transform", `rotate(${angle}deg)`);
             }, 100);
-            $('#wheel_stop').removeClass('d-none');
-            $('#wheel_start').addClass('d-none');
-        }
-    });
 
-    $('#wheel_stop').click(function () {
-        if (spinning) {
+            return;
+        }
+        
+        if (spinning || wheelButtonOption == WHEEL_OPTION_ONE_CLICK) {
             spinning = false;
             clearInterval(spinInterval);
             const random = Math.floor((Math.random() * 360) + 720);
@@ -111,9 +99,7 @@ $(document).ready(function () {
             $(".wheel__inner").css("transform", `rotate(${angle}deg)`);
             setTimeout(() => {
                 // Chia lấy dư cho 360 để lấy lượng quay không hoàn thành một vòng 360deg
-                getPosition(angle % 360);
-                $('#wheel_stop').addClass('d-none');
-                $('#wheel_start').removeClass('d-none');
+                caculateGift(angle % 360);
             }, 5000);
         }
     })
