@@ -9,6 +9,7 @@ $(document).ready(function () {
     // local storage key
     const GIFTS_KEY = 'gifts';
     const WHEEL_RESULTS_KEY = 'wheel_results_key';
+    const WHEEL_BUTTON_OPTION = 'wheel_button_key';
 
     // default value
     const GIFTS_DEFAULT = [
@@ -48,15 +49,24 @@ $(document).ready(function () {
             "file": null,
             "total": 50,
         },
+        {
+            "id": 7,
+            "name": "Tuỳ chọn",
+            "file": null,
+            "total": 50,
+        },
     ];
+    const WHEEL_OPTION_ONE_CLICK = 1;
+    const WHEEL_OPTION_TWO_CLICK = 2;
 
     // get value from local storage
     let gifts = localStorage.getItem(GIFTS_KEY) || GIFTS_DEFAULT;
     let wheelResult = localStorage.getItem(WHEEL_RESULTS_KEY) || [];
+    let wheelButtonOption = localStorage.getItem(WHEEL_BUTTON_OPTION) || WHEEL_OPTION_TWO_CLICK;
 
     // Khoi tao vong quay voi so luong gift dinh truoc
     gifts.map(function (gift) {
-        // $('#wheel__inner').append('<div class="wheel__sec"></div>');
+        $('#wheel__inner').append('<div class="wheel__sec"></div>');
     });
 
     function getPosition(position) {

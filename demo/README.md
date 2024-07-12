@@ -1,1 +1,0 @@
-# lic-lucky-wheel
