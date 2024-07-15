@@ -62,16 +62,18 @@ body {
   background-color: #c0392b;
 }
 .wheel {
-  width: calc(70vh + 12px);
-  height: calc(70vh + 12px);
+  overflow: hidden;
+  width: calc(90vh + 12px);
+  height: calc(90vh + 12px);
   border-radius: 50%;
   border: solid 6px #fff;
   box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.1);
   position: relative;
+  background-color: #fff;
 }
 .wheel__inner {
-  width: calc(70vh);
-  height: calc(70vh);
+  width: 90vh;
+  height: 90vh;
   border-radius: 50%;
   position: relative;
   overflow: hidden;
@@ -79,12 +81,15 @@ body {
 }
 .wheel__sec {
   position: absolute;
-  top: 0;
-  left: calc(70vh/2 - 21vh);
+  top: -8px;
   width: 0;
   height: 0;
   border: solid;
-  border-width: calc(70vh/2) 21vh 0;
+  border-top-width: 47vh;
+  border-left-width: calc(0.523*47vh);
+  border-right-width: calc(0.523*47vh);
+  border-bottom-width: 0;
+  left: calc(47vh/2 - 3vh);
   border-color: transparent;
   transform-origin: 50% 100%;
 }
@@ -94,58 +99,61 @@ body {
 }
 .wheel__sec:nth-child(2) {
   border-top-color: #f85a40;
-  transform: rotate(60deg);
+  transform: rotate(55deg);
   z-index: 2;
 }
 .wheel__sec:nth-child(3) {
   border-top-color: #ffc845;
-  transform: rotate(120deg);
+  transform: rotate(110deg);
   z-index: 2;
 }
 .wheel__sec:nth-child(4) {
   border-top-color: #f48924;
-  transform: rotate(180deg);
+  transform: rotate(165deg);
   z-index: 2;
 }
 .wheel__sec:nth-child(5) {
   border-top-color: #00c16e;
-  transform: rotate(240deg);
+  transform: rotate(220deg);
   z-index: 2;
 }
 .wheel__sec:nth-child(6) {
   border-top-color: #7552cc;
-  transform: rotate(300deg);
+  transform: rotate(275deg);
   z-index: 2;
 }
+.wheel__sec:nth-child(7) {
+  transform: rotate(317deg);
+  border-top-width: 47vh;
+  border-left-width: calc(0.28*47vh);
+  border-right-width: calc(0.28*47vh);
+  transform-origin: 71% 69%;
+  border-image: linear-gradient(in oklab,#c6ffdd, #fbd786, #f7797d);
+  border-image-repeat: unset;
+  z-index: 1;
+}
 .wheel__sec img {
-  width: 10vh;
-  max-height: 17vh;
+  width: 16vh;
+  max-height: 30vh;
   position: absolute;
-  top: -32vh;
-  left: -5vh;
+  top: -45vh;
+  left: -8vh;
 }
-.wheel__sec img.bottle {
-  width: auto;
-  left: -3.5vh;
+.wheel__sec img.rotate90 {
+  transform: rotate(90deg);
+  top: -38vh;
 }
-.wheel__sec img.key_bear {
-  width: 9vh;
-}
-.wheel__sec img.bear {
-  width: 13vh;
-  left: -7vh;
-}
-.wheel__sec img.backpack {
-  width: 12vh;
+.wheel__text {
+  margin: 70px 0 0 70px;
 }
 .wheel__arrow {
   z-index: 2;
-  width: 23vh;
-  height: 23vh;
+  width: 30vh;
+  height: 30vh;
   background: #fff;
   position: absolute;
-  top: calc((70vh + 2vh - 23vh) / 2);
-  left: calc((70vh + 2vh - 23vh) / 2);
+  top: calc((90vh + 12px - 30vh) / 2);
+  left: calc((90vh + 12px - 30vh) / 2);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -158,15 +166,15 @@ body {
   width: 0;
   height: 0;
   border: solid;
-  border-width: 0 15px 40px;
+  border-width: 0 10px 20px;
   border-color: transparent;
   border-bottom-color: #fff;
-  top: -37px;
-  left: calc((23vh - 40px) / 2);
+  top: -15px;
+  left: calc((30vh - 20px) / 2);
 }
 .wheel__button {
-  width: 21vh;
-  height: 21vh;
+  width: 28vh;
+  height: 28vh;
   background-color: lightgray;
   border: none;
   border-radius: 50%;
