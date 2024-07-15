@@ -158,11 +158,11 @@ body {
   width: 0;
   height: 0;
   border: solid;
-  border-width: 0 15px 40px;
+  border-width: 0 15px 30px;
   border-color: transparent;
   border-bottom-color: #fff;
-  top: -37px;
-  left: calc((23vh - 40px) / 2);
+  top: -25px;
+  left: calc((23vh - 30px) / 2);
 }
 .wheel__button {
   width: 21vh;
@@ -252,6 +252,29 @@ body {
   width: 100px;
 }
 .congratulation__note {
+  text-align: center;
+}
+
+.disabled-time {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.2);
+  display: none;
+  z-index: 4;
+}
+.disabled-time__container {
+  width: 40vw;
+  padding: 30px;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.disabled-time__note {
   text-align: center;
 }
 

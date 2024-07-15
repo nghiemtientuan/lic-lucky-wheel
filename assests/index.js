@@ -48,6 +48,16 @@ $(document).ready(function () {
     let wheelResult = JSON.parse(localStorage.getItem(WHEEL_RESULTS_KEY)) || [];
     let wheelButtonOption = localStorage.getItem(WHEEL_BUTTON_OPTION) || WHEEL_OPTION_TWO_CLICK;
 
+    // settup wheel
+    let numberClick = 0;
+    wheelResult.forEach(function (wheelR) {
+        numberClick += wheelR.total;
+    });
+    if (numberClick >= (GIFT_BOTTLE.total + GIFT_KEY_BEAR.total + GIFT_BACKPACK.total + GIFT_BEAR.total + GIFT_TOTE_BAG.total + GIFT_T_SHIRT.total)) {
+        $('#wheel__button').attr('disabled', true);
+        $('.disabled-time').fadeIn();
+    }
+
     $('#wheel__button').click(function () {
         if (wheelButtonOption == WHEEL_OPTION_TWO_CLICK && !spinning) {
             spinning = true;
