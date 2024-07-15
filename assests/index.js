@@ -76,7 +76,14 @@ $(document).ready(function () {
         }
         
         if (spinning || wheelButtonOption == WHEEL_OPTION_ONE_CLICK) {
+            if (wheelButtonOption == WHEEL_OPTION_ONE_CLICK) {
+                // play audio
+                nhacSoSo.currentTime = 0;
+                nhacSoSo.play();
+            }
+            
             spinning = false;
+            $('#wheel__button').attr('disabled', true);
             clearInterval(spinInterval);
             angle += getRandomDeg();
             $(".wheel__inner").css("transform", `rotate(${angle}deg)`);
@@ -102,6 +109,7 @@ $(document).ready(function () {
                 // Chia lấy dư cho 360 để lấy lượng quay không hoàn thành một vòng 360deg
                 saveGift(angle % 360);
                 clearInterval(soundInterval);
+                $('#wheel__button').attr('disabled', false);
             }, 5000);
         }
     });
