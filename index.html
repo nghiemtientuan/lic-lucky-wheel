@@ -13,23 +13,25 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="./assests/index.js"></script>
 </head>
-<body>
+<body class="no-caret">
     <div class="page-logo">
-        <img src="./assests/logo.png" alt="Cao đẳng Lý Thái Tổ logo">
+        <a href="/index.html">
+            <img src="./assests/logo.png" alt="Cao đẳng Lý Thái Tổ logo">
+        </a>
     </div>
     <div class="wheel">
         <div id="wheel__inner" class="wheel__inner">
             <div class="wheel__sec no-caret">
-                <img class="bottle" src="./assests/products/bottle.png" alt="Bottle">
+                <img id="bottle" class="bottle" src="./assests/products/bottle.png" alt="Bottle">
             </div>
             <div class="wheel__sec no-caret">
-                <img class="key_bear" src="./assests/products/bear.png" alt="Key Bear">
+                <img class="key_bear" src="./assests/products/key_bear.png" alt="Key Bear">
             </div>
             <div class="wheel__sec no-caret">
                 <img class="backpack" src="./assests/products/backpack.png" alt="backpack">
             </div>
             <div class="wheel__sec no-caret">
-                <img class="bear" src="./assests/products/lic_bear.png" alt="Bear">
+                <img class="bear" src="./assests/products/bear.png" alt="Bear">
             </div>
             <div class="wheel__sec no-caret">
                 <img class="tote_bag" src="./assests/products/tote_bag.png" alt="Tote Bag">
@@ -38,27 +40,34 @@
                 <img src="./assests/products/t_shirt.png" alt="T shirt">
             </div>
         </div>
-        <div class="wheel__arrow">
+        <div class="wheel__arrow no-caret">
             <button id="wheel__button" class="wheel__button">
                 <img src="./assests/5namlythaito.png" alt="5 năm CĐLTT">
             </button>
         </div>
     </div>
+    <div class="clb-logo">
+        <p>Developed by</p>
+        <a href="/ket-qua.html" target="_blank">
+            <img src="./assests/clblogo.png" alt="CLB CNTT logo">
+        </a>
+    </div>
+
     <div class="congratulation">
         <div class="congratulation__container">
             <div class="congratulation__close">
                 <i class="fas fa-times"></i>
             </div>
             <div class="congratulation__emotion">
-                <i class="fas fa-smile"></i>
+                <img id="con-bottle" class="d-none" src="./assests/products/bottle.png" alt="Bottle">
+                <img id="con-key_bear" class="d-none" src="./assests/products/key_bear.png" alt="Key Bear">
+                <img id="con-backpack" class="d-none" src="./assests/products/backpack.png" alt="Backpack">
+                <img id="con-bear" class="d-none" src="./assests/products/bear.png" alt="Bear">
+                <img id="con-tote_bag" class="d-none" src="./assests/products/tote_bag.png" alt="Tote Bag">
+                <img id="con-t_shirt" class="d-none" src="./assests/products/t_shirt.png" alt="T-Shirt">
             </div>
-            <p class="congratulation__note">CHÚC MỪNG BẠN ĐÃ TRÚNG 1 NHÀ LẦU</p>
+            <p class="congratulation__note">Chúc mừng bạn đã quay được <strong id="con_name"></strong></p>
         </div>
     </div>
-    <div class="clb-logo">
-        <p>Developed by</p>
-        <img src="./assests/clblogo.png" alt="CLB CNTT logo">
-    </div>
-    <audio id="oneSinger" src="./assests/oneSinger.mp3"></audio>
 </body>
 </html>

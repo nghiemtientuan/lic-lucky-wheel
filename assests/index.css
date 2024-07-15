@@ -248,6 +248,9 @@ body {
   text-align: center;
   margin: 0 0 20px 0;
 }
+.congratulation__emotion img {
+  width: 100px;
+}
 .congratulation__note {
   text-align: center;
 }
