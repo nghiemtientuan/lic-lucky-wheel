@@ -4,6 +4,7 @@ $(document).ready(function () {
     let spinInterval;
     let soundInterval;
     const nhacSoSo = new Audio('./assests/nhacSoSo.mp3');
+    const voTay = new Audio('./assests/votay.mp3');
 
     // local storage key
     const WHEEL_RESULTS_KEY = 'wheel_results_key';
@@ -54,7 +55,7 @@ $(document).ready(function () {
             // play audio
             nhacSoSo.currentTime = 0;
             nhacSoSo.play();
-            
+
             spinInterval = setInterval(function() {
                 angle += 60;
                 $(".wheel__inner").css("transform", `rotate(${angle}deg)`);
@@ -66,7 +67,6 @@ $(document).ready(function () {
         
         if (spinning || wheelButtonOption == WHEEL_OPTION_ONE_CLICK) {
             spinning = false;
-            nhacSoSo.pause();
             clearInterval(spinInterval);
             angle += getRandomDeg();
             $(".wheel__inner").css("transform", `rotate(${angle}deg)`);
@@ -84,6 +84,11 @@ $(document).ready(function () {
             }, 50);
 
             setTimeout(() => {
+                nhacSoSo.pause();
+                voTay.play();
+                startConfetti();
+                stopConfetti();
+
                 // Chia lấy dư cho 360 để lấy lượng quay không hoàn thành một vòng 360deg
                 saveGift(angle % 360);
                 clearInterval(soundInterval);
@@ -216,5 +221,15 @@ $(document).ready(function () {
             return;
         $(this).fadeOut();
         $('.congratulation__emotion img').addClass('d-none');
-    })
+    });
+    const startConfetti = () => {
+        setTimeout(function() {
+            confetti.start()
+        }, 1000);
+    };
+    const stopConfetti = () => {
+        setTimeout(function() {
+            confetti.stop()
+        }, 5000);
+    };
 });
