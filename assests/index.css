@@ -268,3 +268,7 @@ body {
   width: 150px;
 }
 /* END clg logo */
+
+.no-caret {
+  caret-color: transparent;
+}

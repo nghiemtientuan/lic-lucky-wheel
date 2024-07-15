@@ -140,9 +140,8 @@ $(document).ready(function () {
             });
         }
         localStorage.setItem(WHEEL_RESULTS_KEY, JSON.stringify(wheelResult));
+        // $('.congratulation').fadeIn();
     }
-
-    // $('.congratulation').fadeIn();
 
     $('.congratulation__close').click(function () {
         $('.congratulation').fadeOut();
