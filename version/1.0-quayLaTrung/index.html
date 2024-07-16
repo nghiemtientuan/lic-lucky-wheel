@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vòng quay LIC</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assests/index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="./assests/index.js"></script>
+    <script src="./assests/confetti.js"></script>
+</head>
+<body class="no-caret">
+    <div class="page-logo">
+        <a href="./index.html">
+            <img src="./assests/logo.png" alt="Cao đẳng Lý Thái Tổ logo">
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="top-media col-12 col-lg-12 col-xl-6 d-flex justify-content-center">
+                <div class="wheel">
+                    <div id="wheel__inner" class="wheel__inner">
+                        <div class="wheel__sec no-caret">
+                            <img id="bottle" class="bottle" src="./assests/products/bottle.png" alt="Bottle">
+                        </div>
+                        <div class="wheel__sec no-caret">
+                            <img class="key_bear" src="./assests/products/key_bear.png" alt="Key Bear">
+                        </div>
+                        <div class="wheel__sec no-caret">
+                            <img class="backpack" src="./assests/products/backpack.png" alt="backpack">
+                        </div>
+                        <div class="wheel__sec no-caret">
+                            <img class="bear" src="./assests/products/bear.png" alt="Bear">
+                        </div>
+                        <div class="wheel__sec no-caret">
+                            <img class="tote_bag" src="./assests/products/tote_bag.png" alt="Tote Bag">
+                        </div>
+                        <div class="wheel__sec no-caret">
+                            <img src="./assests/products/t_shirt.png" alt="T shirt">
+                        </div>
+                    </div>
+                    <div class="wheel__arrow no-caret">
+                        <button id="wheel__button" class="wheel__button">
+                            <img src="./assests/5namlythaito.png" alt="5 năm CĐLTT">
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-12 col-xl-6 d-flex justify-content-center">
+                <div class="ad text-center">
+                    <img class="quayLaTrung" src="./assests/quayLaTrung.png" alt="Quay là trúng">
+                    <div class="adGift">
+                        <img class="keTrungBay" src="./assests/keTrungBay.png">
+                        <img class="ad-gift ad-t_shirt" class="t_shirt" src="./assests/products/t_shirt.png" alt="T shirt">
+                        <img class="ad-gift ad-backpack" class="backpack" src="./assests/products/backpack.png" alt="backpack">
+                        <img class="ad-gift ad-bottle" class="bottle" src="./assests/products/bottle.png" alt="Bottle">
+                        <img class="ad-gift ad-bear" class="bear" src="./assests/products/bear.png" alt="Bear">
+                        <img class="ad-gift ad-tote_bag" class="tote_bag" src="./assests/products/tote_bag.png" alt="Tote Bag">
+                        <img class="ad-gift ad-key_bear" class="key_bear" src="./assests/products/key_bear.png" alt="Key Bear">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <div class="clb-logo">
+        <p>Developed by</p>
+        <a href="./ket-qua.html" target="_blank">
+            <img src="./assests/clblogo.png" alt="CLB CNTT logo">
+        </a>
+    </div>
+
+    <div class="congratulation">
+        <div class="congratulation__container">
+            <div class="congratulation__border">
+                <img class="decor-corner top-left" src="./assests/congas-top-left.png">
+                <img class="decor-corner top-right" src="./assests/congas-top-right.png">
+                <img class="decor-corner bottom-left" src="./assests/congas-bottom-left.png">
+                <img class="decor-corner bottom-right" src="./assests/congas-bottom-right.png">
+                <div class="congratulation__emotion">
+                    <img id="con-bottle" class="d-none" src="./assests/products/bottle.png" alt="Bottle">
+                    <img id="con-key_bear" class="d-none" src="./assests/products/key_bear.png" alt="Key Bear">
+                    <img id="con-backpack" class="d-none" src="./assests/products/backpack.png" alt="Backpack">
+                    <img id="con-bear" class="d-none" src="./assests/products/bear.png" alt="Bear">
+                    <img id="con-tote_bag" class="d-none" src="./assests/products/tote_bag.png" alt="Tote Bag">
+                    <img id="con-t_shirt" class="d-none" src="./assests/products/t_shirt.png" alt="T-Shirt">
+                </div>
+                <p class="congratulation__note">Chúc mừng bạn đã quay được</p>
+                <div class="text-center"><strong id="con_name"></strong></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="disabled-time">
+        <div class="disabled-time__container">
+            <p class="disabled-time__note">
+                <strong id="con_name">Đã hết lượt quay, vui lòng cài đặt lại</strong>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -60,7 +60,15 @@ $(document).ready(function () {
         $('.disabled-time').fadeIn();
     }
 
-    $('#wheel__button').click(function () {
+    $('#wheel__button').click(handleClickWheel);
+    $(document).keydown(function(event) {
+        // ấn phím cách
+        if (event.keyCode === 32) {
+            handleClickWheel();
+        }
+    });
+
+    function handleClickWheel() {
         if (wheelButtonOption == WHEEL_OPTION_TWO_CLICK && !spinning) {
             spinning = true;
             
@@ -115,7 +123,7 @@ $(document).ready(function () {
                 $('#wheel__button').attr('disabled', false);
             }, 5000);
         }
-    });
+    }
 
     function getCurrentRotation(el){
         let st = window.getComputedStyle(el, null);
