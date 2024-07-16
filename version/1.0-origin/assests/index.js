@@ -248,7 +248,7 @@ $(document).ready(function () {
         history.push({
             ...gift,
             gift_id: gift.id,
-            id: history.length + 1,
+            id: new Date().valueOf(),
             created_at: `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`,
         });
         localStorage.setItem(HISTORY_KEY, JSON.stringify(history));

@@ -31,13 +31,13 @@ $(document).ready(function () {
             return historyTmp.id == id;
         });
         if (eHis) {
-            const newHistory = history.filter(function (historyTmp) {
+            history = history.filter(function (historyTmp) {
                 return historyTmp.id != id;
             });
-            localStorage.setItem(HISTORY_KEY, JSON.stringify(newHistory));
+            localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
             $(`#history-${id}`).remove();
     
-            const newWheelResult = wheelResult.map(function (wResult) {
+            wheelResult = wheelResult.map(function (wResult) {
                 if (wResult.id == eHis.gift_id) {
                     wResult.total = wResult.total - 1;
                     $(`#result-${eHis.gift_id} .result-total`).text(wResult.total);
@@ -46,7 +46,7 @@ $(document).ready(function () {
 
                 return wResult;
             });
-            localStorage.setItem(WHEEL_RESULTS_KEY, JSON.stringify(newWheelResult));
+            localStorage.setItem(WHEEL_RESULTS_KEY, JSON.stringify(wheelResult));
         }
     });
 
