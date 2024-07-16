@@ -9,6 +9,7 @@ $(document).ready(function () {
     // local storage key
     const WHEEL_RESULTS_KEY = 'wheel_results_key';
     const WHEEL_BUTTON_OPTION = 'wheel_button_key';
+    const HISTORY_KEY = 'history';
 
     // default value
     const GIFT_BOTTLE = {
@@ -47,6 +48,7 @@ $(document).ready(function () {
     // get value from local storage
     let wheelResult = JSON.parse(localStorage.getItem(WHEEL_RESULTS_KEY)) || [];
     let wheelButtonOption = localStorage.getItem(WHEEL_BUTTON_OPTION) || WHEEL_OPTION_TWO_CLICK;
+    let history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
 
     // settup wheel
     let numberClick = 0;
@@ -204,6 +206,7 @@ $(document).ready(function () {
             });
         }
         localStorage.setItem(WHEEL_RESULTS_KEY, JSON.stringify(wheelResult));
+        saveHistory(existGift);
 
         // show gift
         $('.congratulation__note #con_name').text(existGift.name);
@@ -228,6 +231,18 @@ $(document).ready(function () {
                 break;
         }
         $('.congratulation').fadeIn();
+    }
+
+    function saveHistory(gift) {
+        let d = new Date();
+
+        history.push({
+            ...gift,
+            gift_id: gift.id,
+            id: history.length + 1,
+            created_at: `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`,
+        });
+        localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
     }
 
     $('.congratulation__close').click(function () {

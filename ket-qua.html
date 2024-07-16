@@ -15,29 +15,41 @@
 </head>
 <body>
     <h1 class="text-center">Thống kê</h1>
+    <button id="reset-all" style="margin-left: 10px">Reset lượt quay</button>
     <ul id="thong-ke">
         <li>
             <strong>Tổng số lượt quay: <span id="numberClick"></span></strong>
         </li>
     </ul>
     <div>
-        <table class="table">
+        <table id="thong-ke-sp" class="table">
             <thead class="thead-dark">
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Họ và Tên</th>
-                <th scope="col">Quà tặng</th>
+                <th scope="col">Sản phẩm</th>
+                <th scope="col">Đã quay</th>
+                <th scope="col">Còn lại</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+    </div>
+    <ul id="thong-ke">
+      <li>
+          Danh sách
+      </li>
+  </ul>
+    <div>
+        <table id="thong-ke-luot-quay" class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Sản phẩm</th>
+                <th scope="col">Thời gian quay</th>
                 <th scope="col">Hành động</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th>1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-            </tbody>
+            <tbody></tbody>
           </table>
     </div>
 </body>
