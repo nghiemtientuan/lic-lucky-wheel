@@ -66,6 +66,7 @@ $(document).ready(function () {
             
             // play audio
             nhacSoSo.currentTime = 0;
+            nhacSoSo.loop = true;
             nhacSoSo.play();
 
             spinInterval = setInterval(function() {
