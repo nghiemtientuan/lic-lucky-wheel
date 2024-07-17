@@ -224,9 +224,9 @@ body {
   z-index: 4;
 }
 .congratulation__container {
-  width: 50vw;
+  width: 70vh;
   min-height: 25vh;
-  padding: 30px;
+  padding: 45px;
   background-color: #fff;
   position: absolute;
   top: 50%;
@@ -235,8 +235,11 @@ body {
 }
 .congratulation__container .congratulation__border {
   width: 100%;
-  height: 100%;
   position: relative;
+  min-height: 35vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .congratulation__container .congratulation__border .decor-corner {
   position: absolute;
@@ -272,7 +275,7 @@ body {
 .congratulation__emotion {
   color: #f39c12;
   text-align: center;
-  margin: 0 0 20px 0;
+  margin: 0 0 30px 0;
 }
 .congratulation__emotion img {
   width: 100px;
@@ -323,4 +326,8 @@ body {
 
 .no-caret {
   caret-color: transparent;
+}
+
+.fs-25 {
+  font-size: 25px;
 }
