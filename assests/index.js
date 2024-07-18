@@ -5,12 +5,31 @@ $(document).ready(function () {
     let soundInterval;
     let mssv = '';
     let fullName = '';
+    
+    const loginUser = {
+        password: 'hoithayhoa',
+    }
+
     const nhacSoSo = new Audio('./assests/nhacSoSo.mp3');
     const voTay = new Audio('./assests/votay.mp3');
 
     // local storage key
     const WHEEL_BUTTON_OPTION = 'wheel_button_key';
     const HISTORY_KEY = 'history';
+
+    // session storage key
+    const LOGIN_KEY = 'password';
+    const token = sessionStorage.getItem(LOGIN_KEY);
+    if (token && token == loginUser.password) {
+        // pass
+    } else {
+        const getPasswordInput = prompt('Vui lòng nhập mật khẩu');
+        if (getPasswordInput == loginUser.password) {
+            sessionStorage.setItem(LOGIN_KEY, getPasswordInput);
+        } else {
+            location.reload();
+        }
+    }
 
     // default value
     const GIFT_BOTTLE = {
