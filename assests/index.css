@@ -29,6 +29,7 @@ body {
 }
 .page-logo img {
   width: 160px;
+  z-index: 999;
 }
 /* END page logo */
 
@@ -132,11 +133,17 @@ body {
   width: 9vh;
 }
 .wheel__sec img.bear {
-  width: 13vh;
-  left: -7vh;
+  width: 12vh;
+  left: -6.5vh;
 }
 .wheel__sec img.backpack {
   width: 12vh;
+  left: -7vh;
+}
+.wheel__sec img.t_shirt {
+  width: 13vh;
+  left: -7vh;
+  top: -33vh
 }
 .wheel__arrow {
   z-index: 2;
@@ -185,6 +192,9 @@ body {
   border: solid 3px rgba(0, 0, 0, 0.1);
   font-size: 15px;
 }
+.wheel__button:disabled {
+  opacity: 65%;
+}
 .popup {
   position: fixed;
   width: 30vw;
@@ -224,8 +234,10 @@ body {
   z-index: 4;
 }
 .congratulation__container {
-  width: 70vh;
-  min-height: 25vh;
+  width: 700px;
+  max-width: 70vw;
+  height: 500px;
+  max-height: 70vh;
   padding: 45px;
   background-color: #fff;
   position: absolute;
@@ -236,30 +248,30 @@ body {
 .congratulation__container .congratulation__border {
   width: 100%;
   position: relative;
-  min-height: 35vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 .congratulation__container .congratulation__border .decor-corner {
   position: absolute;
-  width: 28vh;
+  width: 180px;
 }
 .congratulation__container .congratulation__border .decor-corner.top-left {
-  top: -35px;
-  left: -35px;
+  top: -45px;
+  left: -45px;
 }
 .congratulation__container .congratulation__border .decor-corner.top-right {
-  top: -35px;
-  right: -35px;
+  top: -45px;
+  right: -45px;
 }
 .congratulation__container .congratulation__border .decor-corner.bottom-left {
-  bottom: -35px;
-  left: -35px;
+  bottom: -45px;
+  left: -45px;
 }
 .congratulation__container .congratulation__border .decor-corner.bottom-right {
-  bottom: -35px;
-  right: -35px;
+  bottom: -45px;
+  right: -45px;
 }
 .congratulation__close {
   position: absolute;
@@ -321,6 +333,7 @@ body {
 }
 .clb-logo img {
   width: 150px;
+  z-index: 999;
 }
 /* END clg logo */
 

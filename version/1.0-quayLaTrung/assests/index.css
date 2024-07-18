@@ -185,6 +185,9 @@ body {
   border: solid 3px rgba(0, 0, 0, 0.1);
   font-size: 15px;
 }
+.wheel__button:disabled {
+  opacity: 65%;
+}
 .popup {
   position: fixed;
   width: 30vw;
@@ -224,9 +227,9 @@ body {
   z-index: 4;
 }
 .congratulation__container {
-  width: 50vw;
+  width: 30vw;
   min-height: 25vh;
-  padding: 30px;
+  padding: 45px;
   background-color: #fff;
   position: absolute;
   top: 50%;
@@ -235,8 +238,11 @@ body {
 }
 .congratulation__container .congratulation__border {
   width: 100%;
-  height: 100%;
   position: relative;
+  min-height: 35vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .congratulation__container .congratulation__border .decor-corner {
   position: absolute;

@@ -76,6 +76,10 @@ $(document).ready(function () {
             nhacSoSo.currentTime = 0;
             nhacSoSo.loop = true;
             nhacSoSo.play();
+            $('#wheel__button').attr('disabled', true);
+            setTimeout(function () {
+                $('#wheel__button').attr('disabled', false);
+            }, 2000);
 
             spinInterval = setInterval(function() {
                 angle += 60;
@@ -97,6 +101,7 @@ $(document).ready(function () {
             $('#wheel__button').attr('disabled', true);
             clearInterval(spinInterval);
             angle += getRandomDeg();
+            console.log(angle, angle%360);
             $(".wheel__inner").css("transform", `rotate(${angle}deg)`);
 
             let rotated = [];
@@ -154,12 +159,12 @@ $(document).ready(function () {
             const randomDeg = (angle + random) % 360;
 
             // check case near border gift
-            isNearBorderGift = (25 < randomDeg && randomDeg < 35)
-            || (85 < randomDeg && randomDeg < 95)
-            || (145 < randomDeg && randomDeg < 155)
-            || (205 < randomDeg && randomDeg < 215)
-            || (265 < randomDeg && randomDeg < 275)
-            || (325 < randomDeg && randomDeg < 335);
+            isNearBorderGift = (20 < randomDeg && randomDeg < 40)
+            || (80 < randomDeg && randomDeg < 100)
+            || (140 < randomDeg && randomDeg < 160)
+            || (200 < randomDeg && randomDeg < 220)
+            || (260 < randomDeg && randomDeg < 280)
+            || (320 < randomDeg && randomDeg < 340);
 
             // check case missing gift
             isMissingGift = !caculateGift(randomDeg);
@@ -173,13 +178,13 @@ $(document).ready(function () {
         if (position <= 30) {
             caculatedGift = GIFT_BOTTLE;
         } else if (position <= 90) {
-            caculatedGift = GIFT_T_SHIRT;
+            caculatedGift = GIFT_BACKPACK;
         } else if (position <= 150) {
             caculatedGift = GIFT_TOTE_BAG;
         } else if (position <= 210) {
             caculatedGift = GIFT_BEAR;
         } else if (position <= 270) {
-            caculatedGift = GIFT_BACKPACK;
+            caculatedGift = GIFT_T_SHIRT;
         } else if (position <= 330) {
             caculatedGift = GIFT_KEY_BEAR;
         } else {
