@@ -60,27 +60,30 @@ $(document).ready(function () {
     });
     
     $('.delete-history').click(function () {
-        const id = $(this).attr('data-history_id');
-        let history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
-        const eHis = history.find(function (historyTmp) {
-            return historyTmp.id == id;
-        });
-        if (eHis) {
-            history = history.filter(function (historyTmp) {
-                return historyTmp.id != id;
+        const confirmDelete = confirm(`Are you delete this?`);
+        if (confirmDelete) {
+            const id = $(this).attr('data-history_id');
+            let history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
+            const eHis = history.find(function (historyTmp) {
+                return historyTmp.id == id;
             });
-            localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
-            $(`#history-${id}`).remove();
-
-            const giftDefault = [GIFT_BOTTLE, GIFT_KEY_BEAR, GIFT_BACKPACK, GIFT_BEAR, GIFT_TOTE_BAG, GIFT_T_SHIRT].find(function (giftTmp) {
-                return giftTmp.id == eHis.gift_id;
-            });
-            if (giftDefault) {
-                const giftReceivedNumber = history.filter(function (historyTmp) {
-                    return historyTmp.gift_id == giftDefault.id;
-                }).length;
-                $(`#result-${eHis.gift_id} .result-total`).text(giftReceivedNumber);
-                $(`#result-${eHis.gift_id} .result-con-lai`).text(giftDefault.total - giftReceivedNumber);
+            if (eHis) {
+                history = history.filter(function (historyTmp) {
+                    return historyTmp.id != id;
+                });
+                localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+                $(`#history-${id}`).remove();
+    
+                const giftDefault = [GIFT_BOTTLE, GIFT_KEY_BEAR, GIFT_BACKPACK, GIFT_BEAR, GIFT_TOTE_BAG, GIFT_T_SHIRT].find(function (giftTmp) {
+                    return giftTmp.id == eHis.gift_id;
+                });
+                if (giftDefault) {
+                    const giftReceivedNumber = history.filter(function (historyTmp) {
+                        return historyTmp.gift_id == giftDefault.id;
+                    }).length;
+                    $(`#result-${eHis.gift_id} .result-total`).text(giftReceivedNumber);
+                    $(`#result-${eHis.gift_id} .result-con-lai`).text(giftDefault.total - giftReceivedNumber);
+                }
             }
         }
     });
