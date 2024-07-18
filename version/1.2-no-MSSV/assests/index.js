@@ -3,8 +3,6 @@ $(document).ready(function () {
     let spinning = false;
     let spinInterval;
     let soundInterval;
-    let mssv = '';
-    let fullName = '';
     const nhacSoSo = new Audio('./assests/nhacSoSo.mp3');
     const voTay = new Audio('./assests/votay.mp3');
 
@@ -66,12 +64,6 @@ $(document).ready(function () {
     });
 
     function handleClickWheel() {
-        if (!mssv || !fullName) {
-            $('.input-mssv-modal').fadeIn();
-
-            return;
-        }
-
         if (wheelButtonOption == WHEEL_OPTION_TWO_CLICK && !spinning) {
             spinning = true;
             
@@ -132,26 +124,6 @@ $(document).ready(function () {
             }, 5000);
         }
     }
-    
-    $('#saveInfoStudent').click(function() {
-        const mssvTmp = $('#mssv').val().trim();
-        const fullNameTmp = $('#full_name').val().trim();
-        if (mssvTmp && fullNameTmp) {
-            history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
-            const mssvExist = history.find(function(historyTmp) {
-                return historyTmp.mssv == mssvTmp;
-            });
-            if (mssvExist) {
-                // show error
-                $('#search-mssv-error').text('MSSV đã tồn tại!');
-            } else {
-                $('#search-mssv-error').text('');
-                mssv = mssvTmp;
-                fullName = fullNameTmp;
-                $('.input-mssv-modal').fadeOut();
-            }
-        }
-    });
 
     function getCurrentRotation(el){
         let st = window.getComputedStyle(el, null);
@@ -265,15 +237,9 @@ $(document).ready(function () {
             ...gift,
             gift_id: gift.id,
             id: new Date().valueOf(),
-            mssv: mssv,
-            full_name: fullName,
             created_at: `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`,
         });
         localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
-        mssv = '';
-        fullName = '';
-        const mssvTmp = $('#mssv').val('');
-        const fullNameTmp = $('#full_name').val('');
     }
 
     $('.congratulation__close').click(function () {

@@ -54,7 +54,6 @@ $(document).ready(function () {
             <th>${historyIndex + 1}</th>
             <td>${history.name}</td>
             <td><input class='input-mssv' data-history_id='${history.id}' value='${history.mssv || ''}'></td>
-            <td><input class='input-full_name' data-history_id='${history.id}' value='${history.full_name || ''}'></td>
             <td>${history.created_at}</td>
             <td><button class='delete-history' data-history_id='${history.id}'>Xoá</button></td>
             </tr>`);
@@ -104,20 +103,6 @@ $(document).ready(function () {
         history = history.map(function (historyTmp) {
             if (historyTmp.id == id) {
                 historyTmp.mssv = mssv;
-            }
-
-            return historyTmp;
-        });
-        localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
-    });
-
-    $('.input-full_name').keyup(function () {
-        const id = $(this).attr('data-history_id');
-        const fullName = $(this).val();
-        let history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
-        history = history.map(function (historyTmp) {
-            if (historyTmp.id == id) {
-                historyTmp.full_name = fullName;
             }
 
             return historyTmp;

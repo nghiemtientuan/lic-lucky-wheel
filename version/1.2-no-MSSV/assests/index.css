@@ -336,30 +336,6 @@ body {
   text-align: center;
 }
 
-.input-mssv-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.2);
-  display: none;
-  z-index: 5;
-}
-.input-mssv-modal__container {
-  width: 40vw;
-  padding: 30px;
-  background-color: #fff;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.input-mssv-modal__note {
-  text-align: center;
-  font-size: 26px;
-}
-
 /* clg logo */
 .clb-logo {
   position: fixed;
@@ -381,9 +357,6 @@ body {
 
 .no-caret {
   caret-color: transparent;
-}
-.caret {
-  caret-color: auto;
 }
 
 .fs-25 {
