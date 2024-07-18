@@ -81,7 +81,7 @@ $(document).ready(function () {
         if (mssvSearch && mssvSearch) {
             let history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
             historyIndex = history.findIndex(function (historyTmp) {
-                return historyTmp.mssv == mssvSearch;
+                return historyTmp.mssv && historyTmp.mssv == mssvSearch;
             });
             if (historyIndex >= 0) {
                 $('#search-result').text(`Exist in #${historyIndex + 1}`);
