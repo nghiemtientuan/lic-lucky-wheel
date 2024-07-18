@@ -188,6 +188,7 @@ $(document).ready(function () {
 
         // check exist gift
         if (caculatedGift) {
+            wheelResult = JSON.parse(localStorage.getItem(WHEEL_RESULTS_KEY)) || [];
             const existGift = wheelResult.find(function (result) {
                 return result.id === caculatedGift.id;
             });
@@ -201,6 +202,7 @@ $(document).ready(function () {
 
     function saveGift(position) {
         let existGift = caculateGift(position);
+        wheelResult = JSON.parse(localStorage.getItem(WHEEL_RESULTS_KEY)) || [];
         const existGiftIndex = wheelResult.findIndex(function (result) {
             return result.id === existGift.id;
         });
@@ -245,6 +247,7 @@ $(document).ready(function () {
     function saveHistory(gift) {
         let d = new Date();
 
+        history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
         history.push({
             ...gift,
             gift_id: gift.id,
