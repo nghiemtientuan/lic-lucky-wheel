@@ -376,11 +376,3 @@ body {
   background-size: cover;
   background-position: center;
 }
-.quayLaTrung {
-  object-fit: contain;
-  z-index: 1;
-  width: 600px;
-}
-.gx-12 {
-  --bs-gutter-x: 12rem;
-}
