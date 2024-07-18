@@ -23,7 +23,7 @@ $(document).ready(function () {
     };
     const GIFT_BACKPACK = {
         "id": "backpack",
-        "name": "Cặp sách LIC",
+        "name": "Balo LIC",
         "total": 50,
     };
     const GIFT_BEAR = {
