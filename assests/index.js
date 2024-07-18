@@ -28,7 +28,7 @@ $(document).ready(function () {
     };
     const GIFT_BEAR = {
         "id": "bear",
-        "name": "Gấu LIC",
+        "name": "Gấu bông LIC",
         "total": 20,
     };
     const GIFT_TOTE_BAG = {
