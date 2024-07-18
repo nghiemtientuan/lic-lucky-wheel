@@ -7,7 +7,7 @@ $(document).ready(function () {
     let fullName = '';
     
     const loginUser = {
-        password: 'hoithayhoa',
+        password: '********',
     }
 
     const nhacSoSo = new Audio('./assests/nhacSoSo.mp3');
