@@ -7,7 +7,6 @@ $(document).ready(function () {
     const voTay = new Audio('./assests/votay.mp3');
 
     // local storage key
-    const WHEEL_RESULTS_KEY = 'wheel_results_key';
     const WHEEL_BUTTON_OPTION = 'wheel_button_key';
     const HISTORY_KEY = 'history';
 
@@ -20,7 +19,7 @@ $(document).ready(function () {
     const GIFT_KEY_BEAR = {
         "id": "key_bear",
         "name": "Móc khoá Gấu LIC",
-        "total": 50,
+        "total": 80,
     };
     const GIFT_BACKPACK = {
         "id": "backpack",
@@ -30,7 +29,7 @@ $(document).ready(function () {
     const GIFT_BEAR = {
         "id": "bear",
         "name": "Gấu LIC",
-        "total": 50,
+        "total": 20,
     };
     const GIFT_TOTE_BAG = {
         "id": "tote_bag",
@@ -46,15 +45,11 @@ $(document).ready(function () {
     const WHEEL_OPTION_TWO_CLICK = 2;
 
     // get value from local storage
-    let wheelResult = JSON.parse(localStorage.getItem(WHEEL_RESULTS_KEY)) || [];
     let wheelButtonOption = localStorage.getItem(WHEEL_BUTTON_OPTION) || WHEEL_OPTION_TWO_CLICK;
     let history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
 
     // settup wheel
-    let numberClick = 0;
-    wheelResult.forEach(function (wheelR) {
-        numberClick += wheelR.total;
-    });
+    let numberClick = history.length;
     if (numberClick >= (GIFT_BOTTLE.total + GIFT_KEY_BEAR.total + GIFT_BACKPACK.total + GIFT_BEAR.total + GIFT_TOTE_BAG.total + GIFT_T_SHIRT.total)) {
         $('#wheel__button').attr('disabled', true);
         $('.disabled-time').fadeIn();
@@ -193,11 +188,11 @@ $(document).ready(function () {
 
         // check exist gift
         if (caculatedGift) {
-            wheelResult = JSON.parse(localStorage.getItem(WHEEL_RESULTS_KEY)) || [];
-            const existGift = wheelResult.find(function (result) {
-                return result.id === caculatedGift.id;
-            });
-            if (!existGift || (existGift && existGift.total < caculatedGift.total)) {
+            history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
+            const giftRecievedLength = history.filter(function (historyTmp) {
+                return historyTmp.gift_id == caculatedGift.id;
+            }).length;
+            if (giftRecievedLength < caculatedGift.total) {
                 return caculatedGift;
             }
         }
@@ -207,21 +202,6 @@ $(document).ready(function () {
 
     function saveGift(position) {
         let existGift = caculateGift(position);
-        wheelResult = JSON.parse(localStorage.getItem(WHEEL_RESULTS_KEY)) || [];
-        const existGiftIndex = wheelResult.findIndex(function (result) {
-            return result.id === existGift.id;
-        });
-        if (existGiftIndex >= 0) {
-            // case update
-            wheelResult[existGiftIndex].total++;
-        } else {
-            // case create
-            wheelResult.push({
-                ...existGift,
-                total: 1,
-            });
-        }
-        localStorage.setItem(WHEEL_RESULTS_KEY, JSON.stringify(wheelResult));
         saveHistory(existGift);
 
         // show gift

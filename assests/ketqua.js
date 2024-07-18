@@ -1,21 +1,54 @@
-const WHEEL_RESULTS_KEY = 'wheel_results_key';
 const HISTORY_KEY = 'history';
 
+// default value
+const GIFT_BOTTLE = {
+    "id": "bottle",
+    "name": "Bình nước LIC",
+    "total": 50,
+};
+const GIFT_KEY_BEAR = {
+    "id": "key_bear",
+    "name": "Móc khoá Gấu LIC",
+    "total": 80,
+};
+const GIFT_BACKPACK = {
+    "id": "backpack",
+    "name": "Cặp sách LIC",
+    "total": 50,
+};
+const GIFT_BEAR = {
+    "id": "bear",
+    "name": "Gấu LIC",
+    "total": 20,
+};
+const GIFT_TOTE_BAG = {
+    "id": "tote_bag",
+    "name": "Túi tote LIC",
+    "total": 50,
+};
+const GIFT_T_SHIRT = {
+    "id": "t_shirt",
+    "name": "Áo phông LIC",
+    "total": 50,
+};
+
 $(document).ready(function () {
-    let numberClick = 0;
-    let wheelResult = JSON.parse(localStorage.getItem(WHEEL_RESULTS_KEY)) || [];
-    wheelResult.forEach(function (result, resultIndex) {
-        numberClick += result.total;
-        $('#thong-ke-sp tbody').append(`<tr id='result-${result.id}'>
-            <th>${resultIndex + 1}</th>
-            <td>${result.name}</td>
-            <td class='result-total'>${result.total}</td>
-            <td class='result-con-lai'>${50 - result.total}</td>
+    let history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
+    [GIFT_BOTTLE, GIFT_KEY_BEAR, GIFT_BACKPACK, GIFT_BEAR, GIFT_TOTE_BAG, GIFT_T_SHIRT].map(function (giftDefaultValue, giftIndex) {
+        history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
+        const giftReceivedNumber = history.filter(function (historyTmp) {
+            return historyTmp.gift_id == giftDefaultValue.id;
+        });
+        
+        $('#thong-ke-sp tbody').append(`<tr id='result-${giftDefaultValue.id}'>
+            <th>${giftIndex}</th>
+            <td>${giftDefaultValue.name}</td>
+            <td class='result-total'>${giftReceivedNumber.length}</td>
+            <td class='result-con-lai'>${giftDefaultValue.total - giftReceivedNumber.length}</td>
             </tr>`);
     });
-    $('#numberClick').text(numberClick);
-
-    let history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
+    
+    $('#numberClick').text(history.length);
     history.forEach(function (history, historyIndex) {
         $('#thong-ke-luot-quay tbody').prepend(`<tr id='history-${history.id}'>
             <th>${historyIndex + 1}</th>
@@ -38,18 +71,17 @@ $(document).ready(function () {
             });
             localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
             $(`#history-${id}`).remove();
-    
-            let wheelResult = JSON.parse(localStorage.getItem(WHEEL_RESULTS_KEY)) || [];
-            wheelResult = wheelResult.map(function (wResult) {
-                if (wResult.id == eHis.gift_id) {
-                    wResult.total = wResult.total - 1;
-                    $(`#result-${eHis.gift_id} .result-total`).text(wResult.total);
-                    $(`#result-${eHis.gift_id} .result-con-lai`).text(50 - wResult.total);
-                }
 
-                return wResult;
+            const giftDefault = [GIFT_BOTTLE, GIFT_KEY_BEAR, GIFT_BACKPACK, GIFT_BEAR, GIFT_TOTE_BAG, GIFT_T_SHIRT].find(function (giftTmp) {
+                return giftTmp.id == eHis.gift_id;
             });
-            localStorage.setItem(WHEEL_RESULTS_KEY, JSON.stringify(wheelResult));
+            if (giftDefault) {
+                const giftReceivedNumber = history.filter(function (historyTmp) {
+                    return historyTmp.gift_id == giftDefault.id;
+                }).length;
+                $(`#result-${eHis.gift_id} .result-total`).text(giftReceivedNumber);
+                $(`#result-${eHis.gift_id} .result-con-lai`).text(giftDefault.total - giftReceivedNumber);
+            }
         }
     });
 
@@ -57,7 +89,6 @@ $(document).ready(function () {
         const resetConfirm = confirm("Are you sure?");
         if (resetConfirm) {
             localStorage.removeItem(HISTORY_KEY);
-            localStorage.removeItem(WHEEL_RESULTS_KEY);
             location.reload();
         }
     });
