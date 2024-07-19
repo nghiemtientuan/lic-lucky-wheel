@@ -64,7 +64,7 @@ $(document).ready(function () {
         const confirmDelete = confirm(`Are you delete this?`);
         if (confirmDelete) {
             const id = $(this).attr('data-history_id');
-            let history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
+            history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
             const eHis = history.find(function (historyTmp) {
                 return historyTmp.id == id;
             });
@@ -92,6 +92,8 @@ $(document).ready(function () {
     $('#reset-all').click(function () {
         const resetConfirm = confirm("Are you sure?");
         if (resetConfirm) {
+            let d = new Date();
+            localStorage.setItem(`history-${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()}-${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`, localStorage.getItem(HISTORY_KEY))
             localStorage.removeItem(HISTORY_KEY);
             location.reload();
         }
@@ -100,7 +102,7 @@ $(document).ready(function () {
     $('.input-mssv').keyup(function () {
         const id = $(this).attr('data-history_id');
         const mssv = $(this).val();
-        let history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
+        history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
         history = history.map(function (historyTmp) {
             if (historyTmp.id == id) {
                 historyTmp.mssv = mssv;
@@ -114,7 +116,7 @@ $(document).ready(function () {
     $('.input-full_name').keyup(function () {
         const id = $(this).attr('data-history_id');
         const fullName = $(this).val();
-        let history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
+        history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
         history = history.map(function (historyTmp) {
             if (historyTmp.id == id) {
                 historyTmp.full_name = fullName;
@@ -128,7 +130,7 @@ $(document).ready(function () {
     $('#btn-search_mssv').click(function () {
         const mssvSearch = $('#search_mssv').val().trim();
         if (mssvSearch && mssvSearch) {
-            let history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
+            history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
             historyIndex = history.findIndex(function (historyTmp) {
                 return historyTmp.mssv && historyTmp.mssv == mssvSearch;
             });
