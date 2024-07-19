@@ -87,6 +87,15 @@ $(document).ready(function () {
     });
 
     function handleClickWheel() {
+        history = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
+        let numberClick = history.length;
+        if (numberClick >= (GIFT_BOTTLE.total + GIFT_KEY_BEAR.total + GIFT_BACKPACK.total + GIFT_BEAR.total + GIFT_TOTE_BAG.total + GIFT_T_SHIRT.total)) {
+            $('#wheel__button').attr('disabled', true);
+            $('.disabled-time').fadeIn();
+            
+            return;
+        }
+
         if (!mssv || !fullName) {
             $('.input-mssv-modal').fadeIn();
 
