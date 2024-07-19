@@ -12,6 +12,8 @@ $(document).ready(function () {
 
     const nhacSoSo = new Audio('./assests/nhacSoSo.mp3');
     const voTay = new Audio('./assests/votay.mp3');
+    const timeOutTimeDefault = 1000 * 30 // 1 minute
+    let timeOutWheelConstant = null;
 
     // local storage key
     const WHEEL_BUTTON_OPTION = 'wheel_button_key';
@@ -102,6 +104,10 @@ $(document).ready(function () {
             setTimeout(function () {
                 $('#wheel__button').attr('disabled', false);
             }, 2000);
+            timeOutWheelConstant = setTimeout(function () {
+                console.log('111111111111111');
+                handleTwoClick();
+            }, timeOutTimeDefault);
 
             spinInterval = setInterval(function() {
                 angle += 60;
@@ -112,6 +118,10 @@ $(document).ready(function () {
             return;
         }
         
+        handleTwoClick();
+    }
+
+    function handleTwoClick() {
         if (spinning || wheelButtonOption == WHEEL_OPTION_ONE_CLICK) {
             if (wheelButtonOption == WHEEL_OPTION_ONE_CLICK) {
                 // play audio
@@ -119,6 +129,7 @@ $(document).ready(function () {
                 nhacSoSo.play();
             }
             
+            clearTimeout(timeOutWheelConstant);
             spinning = false;
             $('#wheel__button').attr('disabled', true);
             clearInterval(spinInterval);
